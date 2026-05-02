@@ -243,100 +243,129 @@ canvas{
 }
 
 /* график справа */
+/* просто комментарий: этот блок отвечает за график */
 .chart{
+/* класс chart — блок с графиком */
     width:500px;
+ /* ширина графика 500 пикселей */
 } 
  .stats-advanced {
+/* контейнер карточек статистики */
     display: flex;
+/* включает flex — элементы в ряд */
     gap: 20px;
+  /* расстояние между карточками */
     margin-top: 40px;
+  /* отступ сверху */
     flex-wrap: wrap;
+ /* перенос на новую строку если не помещаются */
 }
 
 .card {
+/* карточка (каждый блок с цифрами) */
     background: rgba(255, 255, 255, 0.03);
+  /* прозрачный фон */
     border: 1px solid rgba(0, 255, 200, 0.15);
+ /* рамка */
     border-radius: 16px;
+  /* скругление */
     padding: 18px 24px;
+/* внутренние отступы */
     min-width: 180px;
+   /* минимальная ширина */
     backdrop-filter: blur(12px);
+ /* размытие фона (эффект стекла) */
     transition: 0.3s;
+/* плавная анимация всех изменений (hover, тени, движения) */
     box-shadow: 0 0 20px rgba(0,255,200,0.05);
+/* мягкое свечение вокруг карточки */
 }
 
 .card:hover {
+/* когда на карточку навели мышку */
     transform: translateY(-4px);
+  /* поднимается вверх на 4px */
     box-shadow: 0 0 25px rgba(0,255,200,0.2);
+ /* свечение становится сильнее */
 }
 
 .label {
+/* название показателя (например: Profit, Win Rate) */
     font-size: 13px;
+  /* размер текста */
     color: #9ca3af;
+  /* серый цвет */
 }
 
 .value {
+/* основное значение (цифры) */
     font-size: 24px;
+/* крупный текст */
     font-weight: bold;
+ /* жирный */
     color: white;
+ /* цвет текста */
 }
 
 .value.green {
+/* зелёный вариант значения */
     color: #00ffc8;
+/* цвет */
 }
 
 .desc {
+/* описание под цифрами */
     font-size: 12px;
+  /* маленький текст */
     color: #6b7280;
+ /* серый цвет */
+
 } .globe-container {
+/* контейнер, где находится шар */
   position: relative;
+ /* база для абсолютного позиционирования */
   width: 500px;
+/* ширина */
   height: 500px;
+/* высота */
 }
 
 .globe-container canvas {
+/* canvas (сам шар) */
   position: absolute;
+ /* располагается поверх */
   top: 0;
+ /* отступ сверху */
   left: 0;
+ /* отступ слева */
 }
-
-.connections {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-
-.connections line {
-  stroke: rgba(0,255,200,1);
-  stroke-width: 2;
-filter: drop-shadow(0 0 6px rgba(0,255,200,0.8));
-  stroke-linecap: round;
-  animation: glow 2s infinite alternate;
-}
-
-.city {
-  position: absolute;
-  color: #00ffc3;
-  font-size: 12px;
-  background: rgba(0,0,0,0.4);
-  padding: 4px 8px;
-  border-radius: 10px;
-  border: 1px solid rgba(0,255,200,0.3);
 } .city {
+/* 🌍 Стили для городов (подписи на глобусе) */
   position: absolute;
+ /* размещаем поверх canvas в точной позиции */
   transform: translate(-50%, -50%);
+/* центрируем точку (иначе будет смещение от угла) */
   color: #00ffc3;
-  font-size: 11px;          /* было больше — уменьшаем */
-  padding: 4px 8px;         /* меньше отступы */
+/* цвет текста (неоновый зелёный) */
+  font-size: 11px;          
+/* размер текста (чуть уменьшенный для аккуратности) */
+  padding: 4px 8px;         
+/* внутренние отступы внутри "таблички" */
   border-radius: 10px;
+/* скругление углов */
   background: rgba(0, 255, 200, 0.06);
-  border: 1px solid rgba(0,255,200,0.25);
-  white-space: nowrap;      /* важно */
+/* лёгкий прозрачный фон */
+ border: 1px solid rgba(0,255,200,0.25);
+/* тонкая светящаяся рамка */
+  white-space: nowrap;
+/* текст не переносится на новую строку (важно!) */
 }
-
+/* ✨ Анимация свечения */
 @keyframes glow {
   from { opacity: 0.3; }
+/* менее ярко */
   to { opacity: 1; }
+/* ярче */
 }
 </style>
 </head>
@@ -402,12 +431,9 @@ Optimiza tus inversiones con datos reales del mercado en tiempo real.
 
 <div class="globe-container">
 
-  <canvas id="sphere" width="500" height="500"></canvas>
+<canvas id="sphere" width="500" height="500"></canvas>
 
-  <!-- линии -->
-  <svg class="connections"></svg>
-
-  <!-- города -->
+<!-- города -->
 <div class="city" style="top:18%; left:35%">USA +0.32%</div>
 <div class="city" style="top:28%; left:30%">Canada +0.29%</div>
 <div class="city" style="top:40%; left:25%">Mexico +0.18%</div>
@@ -671,34 +697,6 @@ setInterval(() => {
 </script>
 <svg class="connections"></svg>
 
-<script>
-const svg = document.querySelector('.connections');
-const cities = document.querySelectorAll('.city.connect');
-
-const container = document.querySelector('.globe-container');
-const containerRect = container.getBoundingClientRect();
-
-const centerX = containerRect.width / 2;
-const centerY = containerRect.height / 2;
-
-cities.forEach(city => {
-    if (city.innerText.includes('UK') || 
-    city.innerText.includes('France') || 
-    city.innerText.includes('Germany')) {
-  return;
-}
- const x = city.offsetLeft + city.offsetWidth / 2;
-const y = city.offsetTop + city.offsetHeight / 2;
-
-  const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-
-  line.setAttribute("x1", centerX);
-  line.setAttribute("y1", centerY);
-  line.setAttribute("x2", x);
-  line.setAttribute("y2", y);
-
-  svg.appendChild(line);
-});
 </script>
 </body>
 </html>
