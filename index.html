@@ -687,10 +687,8 @@ const centerX = containerRect.width / 2;
 const centerY = containerRect.height / 2;
 
 cities.forEach(city => {
-  const rect = city.getBoundingClientRect();
-
-  const x = rect.left + rect.width / 2;
-  const y = rect.top + rect.height / 2;
+ const x = city.offsetLeft + city.offsetWidth / 2;
+const y = city.offsetTop + city.offsetHeight / 2;
 
   const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
 
