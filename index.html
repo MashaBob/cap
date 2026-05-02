@@ -439,9 +439,9 @@ async function loadPrices() {
 
         const data = await res.json();
 
-        document.getElementById("btc").innerHTML = "BTC: " + data.bitcoin.usd;
+        document.getElementById("btc").innerHTML = "BTC: $ " + data.bitcoin.usd;
 
-        document.getElementById("eth").innerHTML = "ETH: " + data.ethereum.usd;
+        document.getElementById("eth").innerHTML = "ETH: $ " + data.ethereum.usd;
 
         document.getElementById("usd").innerHTML = "USD: 1.00";
 
