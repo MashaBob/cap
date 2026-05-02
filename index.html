@@ -249,7 +249,8 @@ Optimiza tus inversiones con datos reales del mercado en tiempo real.
 
   <div class="card">
     <div class="label">📈 Profit</div>
-    <div class="value green" id="profit">+9,434</div>
+   <div class="value grren"
+       id="profit">0</div>
     <div class="desc">Ganancia total</div>
   </div>
 
@@ -417,6 +418,27 @@ new TradingView.widget({
   "container_id": "chart"
 });
 </script>
+<script>
+function animateValue(id, start, end, duration) {
+  let obj = document.getElementById(id);
+  let startTime = null;
 
+  function step(timestamp) {
+    if (!startTime) startTime = timestamp;
+    let progress = Math.min((timestamp - startTime) / duration, 1);
+    if (id === "profit") {
+    obj.innerHTML = "+" + Math.floor(progress * (end - start) + start);
+} else {
+    obj.innerHTML = Math.floor(progress * (end - start) + start) + "%";
+}
+    if (progress < 1) requestAnimationFrame(step);
+  }
+
+  requestAnimationFrame(step);
+}
+
+animateValue("profit", 0, 9434, 2000);
+    animateValue("win", 0, 83, 2000);
+</script>
 </body>
 </html>
