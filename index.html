@@ -239,10 +239,10 @@ Optimiza tus inversiones con datos reales del mercado en tiempo real.
 <button>Comenzar ahora</button>
 
 <div class="prices">
-<span id="btc">BTC...</span>
-<span id="eth">ETH...</span>
-<span id="usd">USD: 1.00</span>
-<span id="mxn">MXN...</span>
+    BTC: <span id="btc">0</span>
+    ETH: <span id="eth">0</span>
+    USD: 1.00
+    MXN: <span id="mxn">0</span>
 </div>
 
 <div class="stats-advanced">
@@ -439,6 +439,24 @@ function animateValue(id, start, end, duration) {
 
 animateValue("profit", 0, 9434, 2000);
     animateValue("win", 0, 83, 2000);
+async function loadPrices() {
+    try {
+        const res = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd,mxn");
+        const data = await res.json();
+
+        document.getElementById("btc").innerHTML = data.bitcoin.usd;
+        document.getElementById("eth").innerHTML = data.ethereum.usd;
+        document.getElementById("mxn").innerHTML = data.bitcoin.mxn;
+    } catch (e) {
+        console.log("Ошибка загрузки цен", e);
+    }
+}
+
+// загрузка при старте
+loadPrices();
+
+// обновление каждые 10 сек
+setInterval(loadPrices, 10000);
 </script>
 </body>
 </html>
