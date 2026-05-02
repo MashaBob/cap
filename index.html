@@ -485,10 +485,15 @@ async function loadPrices() {
     try {
         const res = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd,mxn");
         const data = await res.json();
+document.getElementById("btc").innerHTML =
+  "$" + data.bitcoin.usd.toLocaleString();
 
-        document.getElementById("btc").innerHTML = data.bitcoin.usd;
-        document.getElementById("eth").innerHTML = data.ethereum.usd;
-        document.getElementById("mxn").innerHTML = data.bitcoin.mxn;
+document.getElementById("eth").innerHTML =
+  "$" + data.ethereum.usd.toLocaleString();
+
+document.getElementById("mxn").innerHTML =
+  data.bitcoin.mxn.toLocaleString() + " MXN";
+       
     } catch (e) {
         console.log("Ошибка загрузки цен", e);
     }
