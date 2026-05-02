@@ -1,116 +1,212 @@
 <!DOCTYPE html>
+<!-- Тип документа: HTML5 -->
 <html lang="es">
+<!-- Язык сайта: испанский -->
 <head>
+<!-- ГОЛОВА САЙТА: настройки, стили, название -->    
 <meta charset="UTF-8">
+<!-- Кодировка (чтобы текст отображался нормально) -->
 <title>Capital Inteligente</title>
-
+<!-- Название вкладки в браузере -->
 <style>
+/* ========================= */
+/* СТИЛИ САЙТА (CSS) */
+/* ========================= */ 
 body{
     margin:0;
+ /* убираем отступы по краям страницы */
     background:#0b1220;
+ /* фон сайта (тёмный цвет) */
     font-family:Arial;
+ /* шрифт */
     color:white;
+/* цвет текста */
 }
-
+/* ========================= */
+/* ГЛАВНЫЙ КОНТЕЙНЕР */
+/* ========================= */
 .container{
     display:flex;
+/* включает flex — блоки становятся в ряд */
     justify-content:space-between;
+/* распределяет элементы по краям */
     align-items:flex-start;
+ /* выравнивание по верхнему краю */
     padding:60px;
+ /* внутренние отступы */
 }
+    /* ========================= */
+/* БЛОК С ЦЕНАМИ (BTC, ETH и т.д.) */
+/* ========================= */
 .prices {
     display: flex;
+  /* все цены в одну линию */
     gap: 10px;
+  /* расстояние между элементами */
     margin-top: 15px;
+  /* отступ сверху */
 }
-
+/* ============================ */
+/* БЛОК С ЦЕНАМИ (BTC, ETH...) */
+/* ============================ */
 .prices span {
     background: rgba(255,255,255,0.05);
+ /* фон карточек */
     padding: 6px 10px;
+/* внутренние отступы */
     border-radius: 8px;
+/* скругление */
     font-size: 14px;
+/* размер текста */
 }
-/* LEFT */
+/* LEFT */ 
+/* ============================ */
+/* ЛЕВАЯ ЧАСТЬ САЙТА */
+/* ============================ */
 .left{
     width:45%;
+/* занимает 45% ширины */
 }
-
+/* ============================ */
+/* МЕЛКИЙ ТЕКСТ */
+/* ============================ */
 .small{
     font-size:14px;
+ /* размер */
     opacity:0.7;
+/* прозрачность */
 }
-
+/* ============================ */
+/* ЗЕЛЕНЫЙ ТЕКСТ (например Win Rate) */
+/* ============================ */
 .green{
     color:#00ffcc;
+/* цвет */
     font-size:20px;
+ /* крупнее */
     margin-top:5px;
+/* отступ сверху */
 }
+/* ============================ */
+/* ЗАГОЛОВОК (Capital Inteligente) */
+/* ============================ */
 
 h1{
     font-size:64px;
+ /* огромный текст */
     margin:20px 0;
+ /* отступы */
 }
-
+/* ============================ */
+/* ОПИСАНИЕ ПОД ЗАГОЛОВКОМ */
+/* ============================ */
 .desc{
     opacity:0.7;
+/* чуть бледнее */
     margin-bottom:20px;
+/* отступ снизу */
 }
-
+/* ========================= */
+/* КНОПКА */
+/* ========================= */
 button{
     background:#00ffcc;
+  /* цвет кнопки */
     border:none;
+ /* убираем рамку */
     padding:15px 30px;
+  /* внутренние отступы */
     border-radius:10px;
+   /* скругление углов */
     font-size:16px;
+  /* размер текста */
     cursor:pointer;
+  /* курсор как "рука" при наведении */
 }
-
+/* ========================= */
+/* ЦЕНЫ И СТАТИСТИКА (карточки) */
+/* ========================= */
 /* PRICES */
 .prices span, .stats span{
     background:#1a2335;
+  /* фон карточек */
     padding:10px 15px;
+ /* внутренние отступы */
     border-radius:10px;
+ /* скругление */
     margin-right:10px;
+ /* расстояние между карточками */
 }
-
+/* ========================= */
+/* БЛОК С ЦЕНАМИ */
+/* ========================= */
 .prices{
     margin-top:20px;
+ /* отступ сверху */
 }
-
+/* ========================= */
+/* БЛОК СТАТИСТИКИ */
+/* ========================= */
 .stats{
     margin-top:20px;
+   /* отступ сверху */
 }
-
+/* ========================= */
+/* ПРАВАЯ ЧАСТЬ (где шар) */
+/* ========================= */
 /* RIGHT */
 .right{
     display:flex;
+  /* включаем flex */
     flex-direction:column;
+ /* элементы в колонку */
     align-items:center;
+ /* по центру */
     width:500px;
+  /* ширина блока */
 }
-
+/* ========================= */
+/* ОБЁРТКА ШАРА */
+/* ========================= */
 /* блок шара */
 .sphere-wrap{
     position:relative;
+  /* чтобы элементы внутри позиционировались относительно него */
     width:500px;
+  /* ширина */
     height:500px;
+ /* высота */
     margin-bottom:20px;
-} <div class="city" style="top:15%; left:50%">New York +0.32%</div>
-<div class="city" style="top:25%; left:40%">Toronto +0.29%</div>
-<div class="city" style="top:35%; left:35%">Mexico +0.18%</div>
+/* отступ снизу (расстояние до следующего блока) */
+} 
+</style>
+<!-- закончились стили (CSS), дальше идёт HTML (структура сайта) -->
+<!-- ========================= -->
+<!-- ГОРОДА НА ШАРЕ -->
+<!-- ========================= -->
+<!-- позиция: выше/ниже (top), левее/правее (left) -->
+<div class="city" style="top:15%; left:50%">New York <span>0%</span></div>
+<div class="city" style="top:25%; left:40%">Toronto <span>0%</span></div>
+<div class="city" style="top:35%; left:35%">Mexico <span>0%</span></div>
 
-<div class="city" style="top:30%; left:55%">London +0.45%</div>
-<div class="city" style="top:40%; left:60%">Paris +0.33%</div>
-<div class="city" style="top:45%; left:65%">Berlin +0.38%</div>
+<div class="city" style="top:30%; left:55%">London <span>0%</span></div>
+<div class="city" style="top:40%; left:60%">Paris <span>0%</span></div>
+<div class="city" style="top:45%; left:65%">Berlin <span>0%</span></div>
 
-<div class="city" style="top:50%; left:55%">Dubai +0.52%</div>
+<div class="city" style="top:50%; left:55%">Dubai <span>0%</span></div>
 
-<div class="city" style="top:45%; left:75%">Tokyo +0.67%</div>
-<div class="city" style="top:55%; left:80%">Hong Kong +0.41%</div>
-<div class="city" style="top:65%; left:75%">Singapore +0.38%</div>
+<div class="city" style="top:45%; left:75%">Tokyo <span>0%</span></div>
+<div class="city" style="top:55%; left:80%">Hong Kong <span>0%</span></div>
+<div class="city" style="top:65%; left:75%">Singapore <span>0%</span></div>
 
-<div class="city" style="top:70%; left:60%">Sydney +0.26%</div>
-<div class="city" style="top:60%; left:45%">São Paulo +0.21%</div>
+<div class="city" style="top:70%; left:60%">Sydney <span>0%</span></div>
+<div class="city" style="top:60%; left:45%">São Paulo <span>0%</span></div>
+<!--
+class="city" — один тип элементов (города)
+top — положение сверху
+left — положение слева
+% — чтобы адаптировалось под экран
+-->
 
 canvas{
     position:absolute;
@@ -454,7 +550,59 @@ async function loadPrices() {
     }
 
 }
+// ===== ЗАГРУЗКА ПРОЦЕНТОВ ДЛЯ ГОРОДОВ =====
 
+async function loadMarket() {
+
+  try {
+
+    const res = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24h_change=true");
+
+    const data = await res.json();
+
+    let change = data.bitcoin?.usd_24h_change;
+
+    if (change === undefined) {
+
+      change = 0.32;
+
+    }
+
+    change = change.toFixed(2);
+
+    document.querySelectorAll(".city span").forEach(el => {
+
+      if (change >= 0) {
+
+        el.style.color = "#00ffcc";
+
+        el.innerHTML = "+" + change + "%";
+
+      } else {
+
+        el.style.color = "red";
+
+        el.innerHTML = change + "%";
+
+      }
+
+    });
+
+  } catch (e) {
+
+    console.log("API error", e);
+
+  }
+
+}
+
+// ===== ЗАПУСК =====
+
+loadPrices();
+
+loadMarket();
+
+</script>
 loadPrices();
 
 setInterval(loadPrices, 10000);
