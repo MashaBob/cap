@@ -429,6 +429,37 @@ new TradingView.widget({
   "container_id": "chart"
 });
 </script>
+    <script>
+
+async function loadPrices() {
+
+    try {
+
+        const res = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd,mxn");
+
+        const data = await res.json();
+
+        document.getElementById("btc").innerHTML = "BTC: " + data.bitcoin.usd;
+
+        document.getElementById("eth").innerHTML = "ETH: " + data.ethereum.usd;
+
+        document.getElementById("usd").innerHTML = "USD: 1.00";
+
+        document.getElementById("mxn").innerHTML = "MXN: " + data.bitcoin.mxn;
+
+    } catch (e) {
+
+        console.log("API error", e);
+
+    }
+
+}
+
+loadPrices();
+
+setInterval(loadPrices, 10000);
+
+</script>
 <script>
 function animateValue(id, start, end, duration) {
   let obj = document.getElementById(id);
