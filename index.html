@@ -679,6 +679,7 @@ setInterval(() => {
 <script>
 const svg = document.querySelector('.connections');
 const cities = document.querySelectorAll('.city.connect');
+
 const container = document.querySelector('.globe-container');
 const containerRect = container.getBoundingClientRect();
 
@@ -686,6 +687,11 @@ const centerX = containerRect.width / 2;
 const centerY = containerRect.height / 2;
 
 cities.forEach(city => {
+    if (city.innerText.includes('UK') || 
+    city.innerText.includes('France') || 
+    city.innerText.includes('Germany')) {
+  return;
+}
  const x = city.offsetLeft + city.offsetWidth / 2;
 const y = city.offsetTop + city.offsetHeight / 2;
 
