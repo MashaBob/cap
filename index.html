@@ -208,23 +208,35 @@ left — положение слева
 -->
 canvas{
     position:absolute;
+ /* элемент свободно двигается по экрану */
     top:-40px; /* ⬅️ шар выше */
+ /* поднимаем шар ВЫШЕ */
     left:0;
+  /* прижимаем к левому краю */
 }
 
 /* линии */
 .orbit{
     position:absolute;
+  /* тоже свободное позиционирование */
     border:1px solid rgba(0,255,200,0.08);
+ /* тонкая светящаяся линия */
     border-radius:50%;
+ /* делаем круг */
 }
-
+/* свечение вокруг шара */
 /* glow */
 .glow{
     position:absolute;
+ /* свободное размещение */
     width:300px;
+ /* ширина свечения */
     height:300px;
-    background:radial-gradient(circle, rgba(0,255,200,0.2), transparent);
+ /* высота свечения */
+    background:radial-gradient(circle, rgba(0,255,200,0.2), 
+/* яркость в центре */
+    transparent);
+/* плавное исчезновение */
     top:80px;
     left:100px;
 }
@@ -294,8 +306,9 @@ canvas{
 }
 
 .connections line {
-  stroke: rgba(0,255,200,0.4);
-  stroke-width: 1.5;
+  stroke: rgba(0,255,200,1);
+  stroke-width: 2;
+filter: drop-shadow(0 0 6px rgba(0,255,200,0.8));
   stroke-linecap: round;
   animation: glow 2s infinite alternate;
 }
