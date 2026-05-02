@@ -674,8 +674,30 @@ setInterval(() => {
     document.getElementById("mxn").innerHTML = "MXN: 17.4" + Math.floor(Math.random()*10);
 }, 2000);
 </script>
+<svg class="connections"></svg>
 
-</body>
-</html>
+<script>
+const svg = document.querySelector('.connections');
+const cities = document.querySelectorAll('.city');
+
+const centerX = 250;
+const centerY = 250;
+
+cities.forEach(city => {
+  const rect = city.getBoundingClientRect();
+
+  const x = rect.left + rect.width / 2;
+  const y = rect.top + rect.height / 2;
+
+  const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+
+  line.setAttribute("x1", centerX);
+  line.setAttribute("y1", centerY);
+  line.setAttribute("x2", x);
+  line.setAttribute("y2", y);
+
+  svg.appendChild(line);
+});
+</script>
 </body>
 </html>
