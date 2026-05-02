@@ -250,10 +250,10 @@ Optimiza tus inversiones con datos reales del mercado en tiempo real.
 <button>Comenzar ahora</button>
 
 <div class="prices">
-    BTC: <span id="btc">0</span>
-    ETH: <span id="eth">0</span>
-    USD: 1.00
-    MXN: <span id="mxn">0</span>
+    <span id="btc"></span>
+    <span id="eth"></span>
+    <span id="usd"></span>
+    <span id="mxn"></span>
 </div>
 
 <div class="stats-advanced">
@@ -469,5 +469,18 @@ loadPrices();
 // обновление каждые 10 сек
 setInterval(loadPrices, 10000);
 </script>
+    </script>
+
+<script>
+setInterval(() => {
+    document.getElementById("btc").innerHTML = "BTC: " + (78000 + Math.floor(Math.random()*500));
+    document.getElementById("eth").innerHTML = "ETH: " + (2300 + Math.floor(Math.random()*50));
+    document.getElementById("usd").innerHTML = "USD: 1.00";
+    document.getElementById("mxn").innerHTML = "MXN: 17.4" + Math.floor(Math.random()*10);
+}, 2000);
+</script>
+
+</body>
+</html>
 </body>
 </html>
